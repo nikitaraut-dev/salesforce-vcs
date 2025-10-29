@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Email_OR_phone_should_be_mandatory</fullName>
+    <active>true</active>
+    <description>https://creativesolutionsinc.atlassian.net/browse/SAL-1884
+Added validation rule to fill Email or Phone.</description>
+    <errorConditionFormula>AND(ISNEW(),
+ISBLANK( Email ),
+ISBLANK( Phone )
+)</errorConditionFormula>
+    <errorMessage>Please Fill Email or Phone.</errorMessage>
+</ValidationRule>

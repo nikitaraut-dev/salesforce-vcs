@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>prevent_support_team_change_Lead_owner</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( ISCHANGED( OwnerId ),Disable_Validation__c = False, OR( $Profile.Name =&apos;Support Administrator&apos;, $Profile.Name =&apos;Support Representative&apos;, $Profile.Name =&apos;Support Lead&apos;, $Profile.Name =&apos;Support Representative Lite&apos;))</errorConditionFormula>
+    <errorMessage>You don&apos;t have privilege to change lead owner.</errorMessage>
+</ValidationRule>
