@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prevent_chnage_owner</fullName>
+    <active>true</active>
+    <description>I have created a validation rule if account/contact is assigned to any sales person except Colin, Michael Gailing, manolo &amp; system admin no one can not change their owner.</description>
+    <errorConditionFormula>OR(PRIORVALUE(Owner_Profile__c)==&apos;Sales Representative&apos;,PRIORVALUE(Owner_Profile__c)==&apos;Sales Administrator&apos;,PRIORVALUE(Owner_Profile__c)==&apos;Sales Insights Integration User&apos;,PRIORVALUE(Owner_Profile__c)==&apos;Sales Manager&apos;,PRIORVALUE(Owner_Profile__c)==&apos;Sales Order Administrators&apos;,PRIORVALUE(Owner_Profile__c)==&apos;Sales Representative Lite&apos;,PRIORVALUE(Owner_Profile__c)==&apos;	Sales Representative - no delete&apos;, PRIORVALUE(Owner_Profile__c)==&apos;	Sales System Administrator&apos; ) 
+
+
+
+
+ &amp;&amp;  ISCHANGED( OwnerId ) &amp;&amp; NOT( Bypass_Owner_Validation__c )&amp;&amp; !($Profile.Name =&apos;System Administrator&apos; ||  $User.Alias=&apos;colin.ja&apos; ||  $User.Alias=&apos;Manolode&apos;|| $User.Alias=&apos;MichaelG&apos;|| $User.Alias= &apos;dwill&apos; || $User.Alias=&apos;Kyle S&apos; || $UserRole.Name = &apos;Cine Sales Director&apos; 
+|| $UserRole.Name = &apos;Cine Inside Sales Manager&apos; || $UserRole.Name = &apos;LP Inside Sales Manager&apos; || $UserRole.Name = &apos;Director of Ops and Services-LP&apos;)</errorConditionFormula>
+    <errorMessage>validation rule: You do not have permission to change Owner</errorMessage>
+</ValidationRule>

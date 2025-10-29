@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prevent_Non_admin_to_update_generic_acc</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+Is_Generic__c = TRUE,
+NOT($Profile.Name = &apos;System Administrator&apos;)
+)</errorConditionFormula>
+    <errorMessage>Only System Administrators can update generic accounts.</errorMessage>
+</ValidationRule>
